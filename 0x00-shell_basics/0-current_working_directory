@@ -1,0 +1,27 @@
+echo ${0%/*} # prints out present working directory
+
+echo ${0##*/} # print out current file
+
+# On a Mac this would work well 
+
+if [[  ${0%/*} = "$HOME/path/to/src" ]] ; then
+   
+    rvm --create use  "1.9.2@gemset1"
+else
+   
+   rvm --create use  "1.9.2@gemset2"
+fi
+
+if [[ "${0%/*}" = @(*WA*) ]] ; then # contains string WA
+   echo "matched"
+else
+   echo "NOT matched"
+fi;
+
+# For a Linux (say centos) this will work
+
+if [[ `pwd` = @(*WA*) ]] ; then # contains string WA
+   echo "matched"
+else
+   echo "NOT matched"
+fi;
